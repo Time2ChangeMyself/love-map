@@ -1,0 +1,53 @@
+.heart-marker {
+  animation: heartbeat 1.2s infinite;
+  filter: drop-shadow(0 0 8px currentColor);
+  cursor: pointer;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.maplibregl-popup-content {
+  border-radius: 16px;
+  animation: fadeIn forwards 0.3s;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  padding: 24px 20px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(255, 77, 141, 0.15);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  pointer-events: auto;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
