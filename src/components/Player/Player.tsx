@@ -26,7 +26,7 @@ export const Player: FC<{ ref: RefObject<H5AudioPlayer | null> }> = ({
       }}
       ref={ref}
       showSkipControls={false}
-      src="/The Chain (2004 Remaster) - Fleetwood Mac.mp3"
+      src={`${import.meta.env.BASE_URL}/The Chain (2004 Remaster) - Fleetwood Mac.mp3`}
       loop
       customAdditionalControls={[]}
     />

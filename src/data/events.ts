@@ -52,7 +52,7 @@ export const secondLine: LineType[] = [
     coords: [43.02209, 44.098],
     render: true,
     count: 3,
-    imgs: ['besh.jpg'],
+    imgs: [`${import.meta.env.BASE_URL}/besh.jpg`],
   },
 ];
 
@@ -74,7 +74,7 @@ export const thirdLine: LineType[] = [
     coords: [43.0774, 44.0499],
     render: true,
     count: 4,
-    imgs: ['scale_1200.jpg'],
+    imgs: [`${import.meta.env.BASE_URL}/scale_1200.jpg`],
   },
 ];
 
@@ -93,7 +93,10 @@ export const fourth: LineType[] = [
   {
     name: 'Теберда - Домбай ⛰️⛰️⛰️ 🚗',
     desc: 'Шумка, Сурфуджинский, Алибекский и Бадукские озера, вот это мы находились, как-нибудь повторим? 💥',
-    imgs: Array.from({ length: 8 }, (v, i) => `teberda_${i + 1}.jpg`),
+    imgs: Array.from(
+      { length: 8 },
+      (v, i) => `${import.meta.env.BASE_URL}/teberda_${i + 1}.jpg`
+    ),
     coords: [41.7371, 43.4224],
     render: true,
     count: 5,
@@ -112,7 +115,10 @@ export const five: LineType[] = [
   {
     name: 'Москва ✈️',
     desc: 'Съездили к твоим друзьям и хорошо провели время! Музей Космонавтики 🚀🌌, мексиканский ресторан 🌮 и мастер-класс по рисованию, где ты всем показала, насколько ты талантливая художница! 🖼️🎨🖌️',
-    imgs: Array.from({ length: 6 }, (v, i) => `moscow_${6 - i}.jpg`),
+    imgs: Array.from(
+      { length: 6 },
+      (v, i) => `${import.meta.env.BASE_URL}/moscow_${6 - i}.jpg`
+    ),
     coords: [37.3574, 55.7009],
     render: true,
     count: 6,
@@ -129,7 +135,10 @@ export const six: LineType[] = [
     name: 'Осетия ❄️, Порог Неба 🎿',
     desc: 'Первый раз попробовали лыжи и с пользой провели январские праздники!',
     coords: [43.6033, 42.897],
-    imgs: Array.from({ length: 4 }, (v, i) => `nebo_${i + 1}.jpg`),
+    imgs: Array.from(
+      { length: 4 },
+      (v, i) => `${import.meta.env.BASE_URL}/nebo_${i + 1}.jpg`
+    ),
     render: true,
     count: 7,
   },
@@ -152,7 +161,10 @@ export const seven: LineType[] = [
     desc: 'Теплый Ростов на (при)вольном Дону! Здорово погуляли, снова мексиканские рестораны🌶️🌵 и вкусные коктейли🍹! А также уютный и веселый концерт как апогей поездки 🎵',
     coords: [39.7202, 47.2167],
     render: true,
-    imgs: Array.from({ length: 7 }, (v, i) => `rostov_${i + 1}.jpg`),
+    imgs: Array.from(
+      { length: 7 },
+      (v, i) => `${import.meta.env.BASE_URL}/rostov_${i + 1}.jpg`
+    ),
     count: 11,
   },
 ];

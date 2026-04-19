@@ -7,20 +7,20 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/image-512x512.png",
+      "src": "/love-map/image-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshot1.png",
+      "src": "/love-map/screenshot1.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "/screenshot1.png",
+      "src": "/love-map/screenshot1.png",
       "sizes": "1280x720",
       "type": "image/png"
     }
