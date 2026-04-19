@@ -95,7 +95,7 @@ export const MapView = ({
         }}
         // mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
         // mapStyle="https://tiles.openfreemap.org/styles/positron"
-        mapStyle={import.meta.env.BASE_URL + '/map-liberty.json'}
+        mapStyle={import.meta.env.BASE_URL + 'map-liberty.json'}
         attributionControl={false}
       >
         <NavigationControl position="top-right" />
