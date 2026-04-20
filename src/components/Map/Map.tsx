@@ -162,6 +162,7 @@ export const MapView = ({
             open={!!selectedMark}
             onClose={removePopup}
             onOpen={() => {}}
+            disableSwipeToOpen
             transitionDuration={{
               appear: 300,
               enter: 300,
