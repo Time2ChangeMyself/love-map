@@ -93,10 +93,10 @@ export const MapView = ({
                 changeVolumeSmooth({
                   from: audioElement.volume,
                   to: 0,
-                  speed: 1000,
+                  speed: 2000,
                 }).then((v) => {
                   audioElement.currentTime = 200;
-                  return changeVolumeSmooth({ from: v, to: 0.7, speed: 2000 });
+                  return changeVolumeSmooth({ from: v, to: 0.5, speed: 2000 });
                 });
               }
             }}

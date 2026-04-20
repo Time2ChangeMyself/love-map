@@ -12,7 +12,7 @@ export const Player: FC<{ ref: RefObject<H5AudioPlayer | null> }> = ({
   useEffect(() => {
     if (!ref?.current) return;
 
-    ref.current.audio.current.volume = matches ? 1 : 0.7;
+    ref.current.audio.current.volume = matches ? 1 : 0.5;
   }, [matches, ref]);
 
   return (
