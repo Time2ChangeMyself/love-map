@@ -4,6 +4,7 @@ import { Player } from './components/Player';
 import './App.css';
 import { Box, Modal, Typography, Backdrop, Fade, Button } from '@mui/material';
 import type H5AudioPlayer from 'react-h5-audio-player';
+import packageJson from '../package.json';
 
 const style = {
   position: 'absolute',
@@ -28,6 +29,12 @@ const style = {
     width: 'calc(100% - 40px)',
   },
 };
+
+console.log(
+  `%cLove-map version: ${packageJson.version}`,
+  'color: red; font-size: 16px;'
+);
+
 function App() {
   const audio = useRef<H5AudioPlayer | null>(null);
   const [open, setOpen] = useState(true);
