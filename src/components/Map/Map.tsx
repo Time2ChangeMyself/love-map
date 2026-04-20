@@ -10,7 +10,7 @@ import { useCallback, useMemo, useRef, useState, type RefObject } from 'react';
 import HeartSvg from '../../assets/heart-svgrepo-com.svg?react';
 import './Map.css';
 import { Line } from '../Line';
-import { useActiveMarkers, useActiveLines } from '../../hooks';
+import { useActiveMarkers, useActiveLines, useAudio } from '../../hooks';
 import { type LineType } from '../../data';
 import { ClickAwayListener, Stack, useMediaQuery } from '@mui/material';
 import { CinematicText } from '../CinematicText';
@@ -32,6 +32,8 @@ export const MapView = ({
   const [activeMarkers, addNextMarker] = useActiveMarkers();
   const { activeLines, addNextLine } = useActiveLines();
   const [selectedMark, setSelectedMark] = useState<LineType | null>(null);
+
+  const { changeVolumeSmooth } = useAudio({ audioRef });
 
   const selectMark = useCallback(
     (m: LineType | null) => () => {
@@ -72,7 +74,45 @@ export const MapView = ({
       )),
     [activeLines, handleDisableButtons, handleLineAnimationEnd]
   );
-  console.log('render');
+
+  const popupContent = useMemo(
+    () => (
+      <Stack spacing={2}>
+        <CinematicText variant="h4" text={selectedMark?.name || ''} />
+        <CinematicText variant="h5" text={selectedMark?.desc || ''} />
+        {selectedMark?.imgs?.length && <Carousel imgs={selectedMark.imgs} />}
+        {!selectedMark?.hideButton && (
+          <LoveButton
+            disabled={isDisabled}
+            onClick={() => {
+              removePopup();
+              addNextLine(selectedMark?.count ?? 0);
+
+              if ((selectedMark?.count ?? 0) >= 11 && audioRef.current) {
+                const audioElement = audioRef.current.audio?.current;
+                changeVolumeSmooth({
+                  from: audioElement.volume,
+                  to: 0,
+                  speed: 1000,
+                }).then((v) => {
+                  audioElement.currentTime = 200;
+                  return changeVolumeSmooth({ from: v, to: 0.7, speed: 2000 });
+                });
+              }
+            }}
+          />
+        )}
+      </Stack>
+    ),
+    [
+      addNextLine,
+      audioRef,
+      changeVolumeSmooth,
+      isDisabled,
+      removePopup,
+      selectedMark,
+    ]
+  );
 
   return (
     <div style={{ height: '100dvh', width: '100%' }}>
@@ -132,7 +172,7 @@ export const MapView = ({
                 style: {
                   height: 'fit-content',
                   padding: '20px',
-                  maxHeight: '90vh',
+                  maxHeight: '100vh',
                   borderTopLeftRadius: 20,
                   borderTopRightRadius: 20,
                   boxShadow: '0px -4px 20px rgba(0,0,0,0.15)',
@@ -144,34 +184,7 @@ export const MapView = ({
               },
             }}
           >
-            <Stack
-              onTouchStart={(e) => {
-                e.preventDefault();
-                console.log(e);
-              }}
-              spacing={2}
-            >
-              <CinematicText variant="h4" text={selectedMark?.name || ''} />
-              <CinematicText variant="h5" text={selectedMark?.desc || ''} />
-              {selectedMark?.imgs?.length && (
-                <Carousel imgs={selectedMark.imgs} />
-              )}
-              {!selectedMark?.hideButton && (
-                <LoveButton
-                  disabled={isDisabled}
-                  onClick={() => {
-                    removePopup();
-                    addNextLine(selectedMark?.count ?? 0);
-
-                    if ((selectedMark?.count ?? 0) >= 11 && audioRef.current) {
-                      console.log('here');
-
-                      audioRef.current.audio.current.currentTime = 200;
-                    }
-                  }}
-                />
-              )}
-            </Stack>
+            {popupContent}
           </SwipeableDrawer>
         )}
 
@@ -193,34 +206,7 @@ export const MapView = ({
             closeButton={false}
           >
             <ClickAwayListener onClickAway={removePopup}>
-              <Stack
-                onTouchStart={(e) => {
-                  e.preventDefault();
-                  console.log(e);
-                }}
-                spacing={2}
-              >
-                <CinematicText variant="h4" text={selectedMark.name} />
-                <CinematicText variant="h5" text={selectedMark.desc || ''} />
-                {selectedMark.imgs?.length && (
-                  <Carousel imgs={selectedMark.imgs} />
-                )}
-                {!selectedMark.hideButton && (
-                  <LoveButton
-                    disabled={isDisabled}
-                    onClick={() => {
-                      removePopup();
-                      addNextLine(selectedMark.count ?? 0);
-
-                      if ((selectedMark.count ?? 0) >= 11 && audioRef.current) {
-                        console.log('here');
-
-                        audioRef.current.audio.current.currentTime = 200;
-                      }
-                    }}
-                  />
-                )}
-              </Stack>
+              {popupContent}
             </ClickAwayListener>
           </Popup>
         )}

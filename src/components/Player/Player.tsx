@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@mui/material';
-import { useCallback, useEffect, useRef, type FC, type RefObject } from 'react';
+import { useEffect, type FC, type RefObject } from 'react';
 import type H5AudioPlayer from 'react-h5-audio-player';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -12,7 +12,7 @@ export const Player: FC<{ ref: RefObject<H5AudioPlayer | null> }> = ({
   useEffect(() => {
     if (!ref?.current) return;
 
-    ref.current.audio.current.volume = matches ? 1 : 0.1;
+    ref.current.audio.current.volume = matches ? 1 : 0.7;
   }, [matches, ref]);
 
   return (
