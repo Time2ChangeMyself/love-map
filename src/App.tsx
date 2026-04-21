@@ -2,9 +2,10 @@ import { useRef, useState } from 'react';
 import { MapView } from './components/Map/Map';
 import { Player } from './components/Player';
 import './App.css';
-import { Box, Modal, Typography, Backdrop, Fade, Button } from '@mui/material';
+import { Box, Modal, Typography, Backdrop, Fade } from '@mui/material';
 import type H5AudioPlayer from 'react-h5-audio-player';
 import packageJson from '../package.json';
+import { LoveButton } from './components/LoveButton';
 
 const style = {
   position: 'absolute',
@@ -79,35 +80,7 @@ function App() {
 Ты часто используешь свой талант и даришь мне на праздники целые истории и квесты, в этот раз я хотел попробовать сделать что-то подобное и для тебя. Надеюсь тебе понравится небольшая карта Наших событий!`}
             </Typography>
 
-            <Button
-              variant="contained"
-              onClick={handleClose}
-              sx={{
-                mt: 3,
-                px: 4,
-                py: 1.2,
-                borderRadius: '999px',
-
-                // 🔥 градиент
-                background: 'linear-gradient(135deg, #ff4d8d, #ff7eb3)',
-
-                textTransform: 'none',
-                fontSize: 16,
-                fontWeight: 500,
-
-                boxShadow: '0 8px 20px rgba(255, 77, 141, 0.4)',
-
-                transition: 'all 0.3s ease',
-
-                '&:hover': {
-                  background: 'linear-gradient(135deg, #ff3b7c, #ff6aa8)',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 12px 25px rgba(255, 77, 141, 0.6)',
-                },
-              }}
-            >
-              Продолжить 💖
-            </Button>
+            <LoveButton onClick={handleClose} />
           </Box>
         </Fade>
       </Modal>
