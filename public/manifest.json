@@ -1,7 +1,7 @@
 {
   "name": "love-app",
   "short_name": "love-app",
-  "start_url": "/",
+  "start_url": "/love-app",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
