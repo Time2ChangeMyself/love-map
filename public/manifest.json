@@ -1,8 +1,7 @@
 {
   "name": "love-app",
   "short_name": "love-app",
-  "start_url": "https://time2changemyself.github.io/love-map/",
-  "scope": "/love-app/",
+  "start_url":"./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
